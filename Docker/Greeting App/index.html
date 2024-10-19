@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basil Anil - Portfolio</title>
+    <style>
+        /* Basic Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Root Variables for Colors */
+        :root {
+            --primary-color: #003366; /* Dark Blue */
+            --secondary-color: #ffffff; /* White */
+            --light-color: #f5f5f5;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --footer-bg-color: #003366;
+            --footer-text-color: #ffffff;
+        }
+
+        /* Dark Mode Variables */
+        .dark-mode {
+            --primary-color: #bb86fc;
+            --secondary-color: #f5f5f5;
+            --light-color: #222;
+            --border-color: rgba(255, 255, 255, 0.2);
+            --footer-bg-color: #333;
+            --footer-text-color: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 40px;
+            border-bottom: 3px solid var(--border-color);
+        }
+
+        .header-title {
+            font-size: 32px;
+            margin-left: 20px;
+        }
+
+        .header-image {
+            margin-right: 20px;
+            max-width: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.5s, box-shadow 0.3s;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Flexbox for alignment */
+        .info, .about {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-item, .about-item {
+            flex: 1;
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            background-color: var(--light-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            border: 3px solid var(--border-color);
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        ul, ol {
+            margin-left: 40px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #087f23;
+        }
+
+        /* List Styling */
+        ol, ul {
+            border-left: 3px solid var(--border-color);
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #087f23;
+            transform: scale(1.05);
+        }
+
+        /* Dark Mode Toggle */
+        #darkModeToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        #darkModeToggle:hover {
+            background-color: #333;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: var(--footer-bg-color);
+            color: var(--footer-text-color);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            border-top: 3px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+
+        .social-links {
+            padding: 10px;
+            background-color: var(--light-color);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        .contact-box {
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 10px;
+            background-color: var(--light-color);
+            max-width: 200px;
+            text-align: left;
+            margin: 0 auto;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 400px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .modal-content input,
+        .modal-content textarea {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .modal-content input:focus,
+        .modal-content textarea:focus {
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+
+<button id="darkModeToggle">🌙</button>
+
+<header>
+    <div class="header-title">Basil Anil</div>
+    <img src="C:\Users\basil\Downloads\basil_pp_1.jpg" alt="Basil Anil" class="header-image">
+</header>
+
+<div class="container">
+    <h1>Basil Anil - Portfolio</h1>
+
+    <div class="info">
+        <div class="info-item">
+            <p><strong>Address:</strong> Chellatu(H), Kottapady P.O., Kothamangalam, Ernakulam, India - 686692</p>
+            <p><strong>Mobile Number:</strong> +91 8590-356-972</p>
+            <p><strong>Email Address:</strong> basilanil8@gmail.com</p>
+        </div>
+
+        <div class="info-item">
+            <h2>Education</h2>
+            <p><strong>College:</strong> Mar Athanasious College of Engineering</p>
+            <p><strong>Major:</strong> B.Tech in Computer Science & Engineering (CSE) and Data Science</p>
+            <p><strong>Batch:</strong> 2021-2025</p>
+            <p><strong>CGPA:</strong> 7.23</p>
+        </div>
+    </div>
+
+    <h2>About Me</h2>
+
+    <p>I enjoy unearthing hidden patterns in data and translating them into actionable insights, fueled by scientific curiosity and passion for solving real-world challenges. I possess strong skills in team management, effectively coordinating and leading groups to achieve common goals, while ensuring optimal resource utilization. These skills make me a valuable asset in any professional setting.</p>
+
+    <h2>Friend</h2>
+    <img src="achievement-photo.jpg" alt="alan" class="modal-trigger" id="achievementPhoto">
+
+    <h2>Skill Set</h2>
+    <ol>
+        <li>Python</li>
+        <li>SQL</li>
+        <li>Microsoft Excel</li>
+        <li>HTML & CSS</li>
+        <li>JavaScript</li>
+    </ol>
+
+    <h2>Strengths & Weaknesses</h2>
+    <ul>
+        <li><strong>Strength:</strong> Problem-solving ability</li>
+        <li><strong>Strength:</strong> Quick learner</li>
+        <li><strong>Weakness:</strong> Perfectionism</li>
+        <li><strong>Weakness:</strong> Overthinking</li>
+    </ul>
+</div>
+
+<footer>
+    <div class="contact-box">
+        <h3><a href="#" id="contactLink">Contact Me</a></h3>
+    </div>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/basil-anil-10a66a1b1/" target="_blank">LinkedIn</a> | 
+        <a href="https://github.com/Blitzhac" target="_blank">GitHub</a>
+    </div>
+    &copy; 2024 Basil Anil | All Rights Reserved
+</footer>
+
+<!-- Modal for Images -->
+<div class="modal" id="imageModal">
+    <img class="modal-content" id="modalImage">
+</div>
+
+<!-- Contact Modal -->
+<div class="modal" id="contactModal">
+    <div class="modal-content">
+        <h3>Contact Me</h3>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        <button id="submitContact">Submit</button>
+        <button id="closeContactModal">Close</button>
+    </div>
+</div>
+
+<script>
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        darkModeToggle.textContent = body.classList.contains('dark-mode') ? '🌞' : '🌙';
+    });
+
+    // Image Modal Logic
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const achievementPhoto = document.getElementById('achievementPhoto');
+
+    achievementPhoto.addEventListener('click', () => {
+        imageModal.style.display = 'flex';
+        modalImage.src = achievementPhoto.src;
+    });
+
+    imageModal.addEventListener('click', () => {
+        imageModal.style.display = 'none';
+    });
+
+    // Contact Modal Logic
+    const contactLink = document.getElementById('contactLink');
+    const contactModal = document.getElementById('contactModal');
+    const closeContactModal = document.getElementById('closeContactModal');
+
+    contactLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        contactModal.style.display = 'flex';
+    });
+
+    closeContactModal.addEventListener('click', () => {
+        contactModal.style.display = 'none';
+    });
+
+    // Contact Form Submission
+    const submitContact = document.getElementById('submitContact');
+    submitContact.addEventListener('click', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        if (name && email && message) {
+            alert(`Thank you, ${name}! We'll reach out to you at ${email}.`);
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+            contactModal.style.display = 'none';
+        } else {
+            alert('Please fill in all the fields.');
+        }
+    });
+
+    // Close Contact Modal on clicking outside
+    contactModal.addEventListener('click', (e) => {
+        if (e.target === contactModal) {
+            contactModal.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
