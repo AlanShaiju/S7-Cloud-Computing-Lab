@@ -1,0 +1,36 @@
+Docker Basics
+
+
+
+ 
+
+
+Dockerfile tells the docker the configuration it acts as an image. Container is an isolated package running your code. Containers are stateless meaning once they shut down all data in it is lost. Dockerfiles contains instructions to build the source code. Common docker instructions include:
+FROM {deines the base for the image}
+RUN {executes commands}
+WORKDIR {sets the working directory}
+COPY {copies files or directories and adds them to the files system}
+CMD {defines the default program to run when the container starts running}
+
+docker build {helps convert the dockerfile to an image}
+
+Each image is built as different layers. Each layer is buil tby a sha-256 hash. If the dockerfile is edited then when rebuilding only the edited layer is rebuilt rather than building from the ground up. 
+The ‘-t’ tag helps tag the docker image with a recognizable name.
+
+Eg: docker build . -t name
+
+A container can be run using the docker run command:
+ {docker run filename}
+
+The container runs on the local host. 
+The docker ps command lists all the running and stopped containers. {docker ps}
+
+To stop a container we can use: {docker container stop name}
+To stop a container forcefully use: {docker container kill name}
+
+To remove an image use: {docker container remove name}
+To push a container to a cloud use:{docker push server/name}
+
+To download a docker image use: {docker pull }
+
+Kubernetes can be used to control and manage a container cluster.
