@@ -1,0 +1,27 @@
+Server Code with GUI (server_gui.py)
+This server GUI will:
+
+Display a message when a client connects.
+Display the list of words received and the count of palindromes.
+Show the list of palindromic words found.
+
+Client Code with GUI (client_gui.py)
+This client GUI will:
+
+Allow the user to input a list of words.
+Send the list to the server.
+Display the server's response, which includes the count and list of palindromic words.
+
+
+Explanation
+Server GUI:
+Starts the server when the "Start Server" button is clicked.
+Accepts client connections and processes words to find palindromes.
+Updates the server GUI with client connections and results.
+Client GUI:
+Takes a list of words from the user.
+Sends words to the server and displays the response in the GUI.
+Running the Program
+Run server_gui.py in one terminal or IDE to start the server GUI.
+Run client_gui.py in another terminal or IDE to open the client GUI.
+Enter words in the client GUI and click "Send to Server" to receive the palindrome count and list.
