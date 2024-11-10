@@ -1,0 +1,12 @@
+Explanation of the program:
+open_file: Opens the file dialog for the user to select a file. It reads the file content and displays it in a text area. If there is an encoding error while reading the file, it replaces the problematic characters.
+replace_content: Gets the old and new phrases from the input fields, replaces occurrences of the old phrase with the new phrase in the file content, and writes the updated content back to the file.
+Error Handling: It handles file-related errors (e.g., file not found) and provides feedback to the user through messagebox dialogs.
+GUI Elements:
+Buttons for opening a file and replacing text.
+Entry fields to input the old phrase (to be replaced) and the new phrase.
+A text area to display the content of the selected file.
+Usage:
+Click "Open File" to select the file you want to modify.
+Input the old phrase you want to replace and the new phrase.
+Click "Replace Phrase" to modify the file content.
